@@ -1,1 +1,1 @@
-project_id = "ingka-csrdata-contact-dev"
+project_id = <ADD-GCP-PROJECT-ID>
