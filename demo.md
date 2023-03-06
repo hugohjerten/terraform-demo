@@ -37,9 +37,14 @@ terraform apply plan.tfplan
 ```
 Have a look in your GCP project, to make sure that it has been created.
 Also, have a look in the `terraform.tfstate` file.
+Obviously, normally you do not want to store the state on your local machine, but rather in a Bucket in the cloud that is accessible by your CD.
+
+If you try running the plan command again, you will see that there are no changes to be applied.
 
 ### Destroy
-Now remove the `example_service_account` resource in `part_1/main.tf`, and try running the plan & apply commands again.
+```sh
+terraform destroy
+```
 Have a look in your GCP project, as well as in the `terraform.tfstate` file.
 
 ## part 2
@@ -76,7 +81,9 @@ curl -X GET <REPLACE-WITH-OUTPUT-URL> -H "Authorization: Bearer $(gcloud auth pr
 ```
 
 ### Destroy
-Now remove the `example_service_account` resource in `part_2/main.tf`, and try running the plan & apply commands again.
+```sh
+terraform destroy
+```
 Have a look in your GCP project, as well as in the `terraform.tfstate` file.
 
 ## part 3
@@ -89,3 +96,30 @@ Generally, this is bad practice; explicit is better than implicit.
 ### Init, create and destroy
 Same as in part_2, but for part_3!
 
+## part 4
+In this part the we have introduced the concept of milieus (environments), as well as remote state storage.
+There is a common `main.tf` file in the root of the `milieus` folder, but the variable values might have different values for the different milieus.
+
+Instead of storing the state on your local machine, the state is stored in a cloud bucket.
+(Make sure to update `config.gcs.tfbackend` with your bucket name that will store the state.)
+
+### Init
+To start off with we need to initialize terraform, i.e. install the providers.
+```sh
+cd part_4/milieus
+
+# Initialize providers
+terraform init -backend-config=dev/config.gcs.tfbackend
+```
+
+### Create
+Now we create the terraform plan, and apply it.
+```sh
+# Create plan
+terraform plan -var-file=dev/vars.auto.tfvars -out=plan.tfplan
+
+# Apply plan
+terraform apply plan.tfplan
+```
+You can find the state in your bucket now.
+When done, don't forget to cleanup (destroy).
