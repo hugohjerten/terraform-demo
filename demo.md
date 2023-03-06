@@ -110,3 +110,6 @@ terraform apply plan.tfplan
 ```
 You can find the state in your bucket now.
 When done, don't forget to cleanup (destroy).
+```sh
+terraform destroy -var-file=dev/vars.auto.tfvars
+```
