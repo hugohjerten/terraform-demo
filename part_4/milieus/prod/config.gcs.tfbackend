@@ -1,3 +1,3 @@
 # Location of Terraform state
-bucket = "<ADD-GCP-BUCKET-NAME>"
+bucket = "hugo-tf-demo-2023-march"
 prefix = "prod"
