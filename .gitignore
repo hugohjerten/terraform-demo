@@ -3,4 +3,4 @@
 **terraform.tfstate.backup
 **plan.tfplan
 
-part_1/.terraform.lock.hcl
+**.terraform.lock.hcl
