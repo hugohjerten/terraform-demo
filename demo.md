@@ -78,3 +78,14 @@ curl -X GET <REPLACE-WITH-OUTPUT-URL> -H "Authorization: Bearer $(gcloud auth pr
 ### Destroy
 Now remove the `example_service_account` resource in `part_2/main.tf`, and try running the plan & apply commands again.
 Have a look in your GCP project, as well as in the `terraform.tfstate` file.
+
+## part 3
+We introduce the concept of modules.
+We have added the director `part_3/cloud_run` which contains code for creating a service account and cloud run instance.
+
+In this part we are using the concept of `default` values extensively.
+Generally, this is bad practice; explicit is better than implicit.
+
+### Init, create and destroy
+Same as in part_2, but for part_3!
+
