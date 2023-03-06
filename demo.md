@@ -1,18 +1,5 @@
 # terraform demo
 
-## Setup
-To be able to run this tutorial, you will need to have the following:
-- [`tfenv`](https://github.com/tfutils/tfenv): To manage different versions of terraform. (see [`.terraform-version`](.terraform-version))
-- Fill in the approprate variable values in the respective `vars.auto.tfvars` files
-- Have [`gcloud` CLI](https://cloud.google.com/sdk/gcloud) installed, and be authenticated with the project you're interacting with
-- You will need the following permissions in the GCP project that you're interacting with:
-    - `roles/iam.serviceAccountAdmin`
-    - `roles/run.admin`
-    - `roles/iam.serviceAccountUser`
-- The following Google APIs need to be enabled for your project:
-    - `iamcredentials.googleapis.com`
-    - `run.googleapis.com`
-
 ## part 1
 Creating a service account, and deleting it again.
 Check out the documentation on the [`google_service_account` terraform resource](https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/google_service_account).
